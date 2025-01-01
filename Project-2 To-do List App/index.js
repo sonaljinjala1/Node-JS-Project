@@ -67,5 +67,5 @@ app.listen(port, (err) => {
         console.log(err);
         return false;
     }
-    console.log(`Server is running on port: ${port}`);
+    console.log(`Server is running on port :https://localhost:${port}`);
 });
