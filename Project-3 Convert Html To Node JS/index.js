@@ -3,7 +3,7 @@ const port = 9090;
 const app = express();//destructuring
 app.set('view engine', 'ejs');
 
-const path = require('path');//bathi css ni file atteched karva mate use thay che
+const path = require('path');//bathi css ni file atteched karva mate use thay che.....
 app.use('/', express.static(path.join(__dirname, 'public')))//bathi css ni file atteched karva mate use thay che
 
 //Pages Add karne ke liye use hota he
@@ -95,6 +95,9 @@ app.get('/Error-500', (req, res) => {
     return res.render('Error-500');
 })
 
+
+
+//server run karva mate
 app.listen(port, (err) => {
     if (err) {
         console.log(err);

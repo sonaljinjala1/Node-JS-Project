@@ -6,9 +6,9 @@ const app = express();
 
 const db = require('./config/db');
 
-const path = require('path');
+const path = require('path');// To get file path
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs");//
 
 const bookModel = require("./models/detailsModel");
 
