@@ -146,7 +146,7 @@
             text-transform: uppercase;
         }
 
-        .btn-dark{            
+        .btn-dark {
             background-color: black;
             color: white;
         }
@@ -165,13 +165,16 @@
             justify-content: space-between;
             margin-top: 30px;
         }
-        .card{
+
+        .card {
             width: 350px;
             margin: 20px;
             height: 400px;
         }
-        
-        
+        .card img{
+            object-fit: cover;
+            object-position: top;
+        }
     </style>
 </head>
 
@@ -186,7 +189,8 @@
             </div>
 
             <div class="search-bar">
-                <input type="text" placeholder="Search for Movies, Events, Plays, Sports, and Activities...........................................">
+                <input type="text"
+                    placeholder="Search for Movies, Events, Plays, Sports, and Activities...........................................">
             </div>
 
             <h1>movie-List</h1>
@@ -200,7 +204,8 @@
             <% all.map((val)=> { %>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="<%= val?.image %>" class="card-img-top" alt="Cover Image">
+                        <img src="<%= val?.image %>" class="card-img-top" alt="Cover Image"  style="
+                         object-fit: cover !important; object-fit: fill;">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <%= val?.name %>
@@ -224,7 +229,7 @@
     <div class="d-flex">
         <div class="container">
             <a href="/movie/add" class="btn btn-dark">Add New Movie</a>
-        <a href="/" class="btn btn-secondary">Back to Home</a>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
         </div>
     </div>
 
