@@ -96,7 +96,7 @@ app.post('/updateRecord', (req, res) => {
 })
 
 
-// Server Start
+//server Start [server listening]
 app.listen(port, (err) => {
     if (err) {
         console.log(err);
