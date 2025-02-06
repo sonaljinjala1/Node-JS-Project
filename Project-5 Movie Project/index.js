@@ -10,8 +10,6 @@ const path = require('path');
 
 const db = require('./config/db');
 
-app.use(express.static('public')); 
-
 app.use('/uploads',express.static(path.join(__dirname,'uploads')));
 
 app.use(express.urlencoded());
@@ -19,9 +17,7 @@ app.use(express.urlencoded());
 app.get('/',(req,res) => {
     return res.render('homePage')
 })
-
 app.use('/',require('./routes/indexRoute'));
-
 app.listen(port,(err) => {
     if(err){
         console.log(err);

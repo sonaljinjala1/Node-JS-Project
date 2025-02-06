@@ -19,5 +19,5 @@ const dataSchema = mongoose.Schema({
     }
 })
 
-const movieCrud = mongoose.model('moviecrud',dataSchema);
-module.exports = movieCrud;
+const movieAdd = mongoose.model('movieAdd',dataSchema);
+module.exports = movieAdd;

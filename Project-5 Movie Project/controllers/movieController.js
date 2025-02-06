@@ -2,10 +2,14 @@ const movieModel = require('../model/movieModel');
 
 const fs = require('fs');
 
+
+//add data
 const addData = (req, res) => {
     return res.render('movie/add');
 }
 
+
+//view data
 const viewData = async (req, res) => {
     try {
         let all = await movieModel.find({})
@@ -17,6 +21,7 @@ const viewData = async (req, res) => {
         return false;
     }
 }
+
 
 const insertData = async (req, res) => {
     try {
@@ -36,6 +41,7 @@ const insertData = async (req, res) => {
     }
 }
 
+//delete data
 const deleteData = async (req, res) => {
     try {
         let single = await movieModel.findById(req.query.delId)
@@ -49,6 +55,8 @@ const deleteData = async (req, res) => {
     }
 }
 
+
+//edit data
 const editData = async (req, res) => {
     try {
         let singleRow = await movieModel.findById(req.query.editId);
@@ -62,25 +70,27 @@ const editData = async (req, res) => {
     }
 }
 
+
+//update data
 const updateData = async (req, res) => {
     try {
         const { editId, name, description, price } = req.body;
         if (req.file) {
             let singleRow = await movieModel.findById(editId);
             fs.unlinkSync(singleRow?.image);
-            await movieModel.findByIdAndUpdate(editId,{
+            await movieModel.findByIdAndUpdate(editId, {
                 name: name,
-                description : description,
-                price : price,
-                image : req.file?.path
+                description: description,
+                price: price,
+                image: req.file?.path
             })
             console.log("updated");
             return res.redirect('/movie');
         } else {
-            await movieModel.findByIdAndUpdate(editId,{
+            await movieModel.findByIdAndUpdate(editId, {
                 name: name,
-                description : description,
-                price : price
+                description: description,
+                price: price
             })
             console.log("updated");
             return res.redirect('/movie');
