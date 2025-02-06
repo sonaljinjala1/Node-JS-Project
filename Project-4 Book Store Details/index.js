@@ -18,7 +18,6 @@ app.get('/', (req, res) => {
     return res.render('Add')
 })
 
-
 // Add Record
 app.post('/addRecord', (req, res) => {
     const { name, price, pages, description, author } = req.body;
