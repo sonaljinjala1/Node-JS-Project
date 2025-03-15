@@ -29,7 +29,7 @@ const registerUser = async (req, res) => {
             email: email,
             password: password
         });
-        console.log("register successfully......!");
+        console.log("register successfully........................!");
         return res.redirect('/');
     } catch (err) {
         console.log(err);
@@ -49,6 +49,7 @@ const viewBlogPage = async (req, res) => {
     }
 }
 
+
 //Add blog Data
 const addBlogData = async (req, res) => {
     try {
@@ -63,13 +64,14 @@ const addBlogData = async (req, res) => {
             description: description,
             image: req.file?.path
         })
-        console.log(`Blog  Successfully added......!`);
+        console.log(`Blog  Successfully added............................!`);
         return res.redirect('/viewblogpage');
     } catch (err) {
         console.log(err);
         return false;
     }
 }
+
 
 //Delete Blog Data
 const deleteBlogData = async (req, res) => {
@@ -78,13 +80,14 @@ const deleteBlogData = async (req, res) => {
         fs.unlinkSync(single?.image);
 
         await userModel.blogUser.findByIdAndDelete(req.query.delId);
-        console.log(`BlogSuccessfully deleted......!`);
+        console.log(`Blog Successfully deleted....................!`);
         return res.redirect('/viewblogpage');
     } catch (err) {
         console.log(err);
         return false;
     }
 }
+
 
 //Edit Blog Data
 const editBlogData = async (req, res) => {
@@ -97,6 +100,7 @@ const editBlogData = async (req, res) => {
         return false;
     }
 }
+
 
 //Update Blog Data
 const updateBlogData = async (req, res) => {
@@ -111,7 +115,7 @@ const updateBlogData = async (req, res) => {
                 description: description,
                 image: req.file?.path
             })
-            console.log("BlogSuccessfully updated......!");
+            console.log("Blog Successfully updated........................!");
             return res.redirect('/viewblogpage');
         } else {
             await userModel.blogUser.findByIdAndUpdate(editId, {
@@ -119,7 +123,7 @@ const updateBlogData = async (req, res) => {
                 description: description,
                 image: req.file?.path
             })
-            console.log("Blog Successfully updated......!");
+            console.log("Blog Successfully updated...........................!");
             return res.redirect('/viewblogpage');
         }
     } catch (err) {
@@ -130,10 +134,19 @@ const updateBlogData = async (req, res) => {
 
 
 //logout user
+// const logoutUser = (req, res) => {
+//     res.clearCookie('auth');
+//     return res.redirect('/');
+// }
 const logoutUser = (req, res) => {
-    res.clearCookie('auth');
-    return res.redirect('/');
-}
+    req.logout((err) => {
+        if (err) {
+            return res.status(500).send('Logout failed');
+        }
+        return res.redirect('/');
+    });
+};
+
 
 
 //Register Page
@@ -141,18 +154,28 @@ const registerPage = (req, res) => {
     return res.render('register');
 }
 
+
 //Login Page
-const loginPage = (req, res) => {
-    if (req.cookies?.auth) {
+// const loginPage = (req, res) => {
+//     if (req.cookies?.auth) {
+//         return res.redirect('/dashboard');
+//     }
+//     return res.render('login');
+// }
+
+const loginPage = (req,res)=>{
+    if (req.isAuthenticated()) {
         return res.redirect('/dashboard');
     }
     return res.render('login');
 }
 
+
 //Dashboard
 const dashboardPage = (req, res) => {
     return res.render('dashboard');
 }
+
 
 
 //Add Blog

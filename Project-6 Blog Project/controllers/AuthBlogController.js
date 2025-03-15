@@ -6,6 +6,7 @@ const fs = require('fs');
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
+        
         const user = await userModel.users.findOne({ email: email });
 
         if (!user || user.password != password) {
@@ -13,6 +14,9 @@ const loginUser = async (req, res) => {
             return res.redirect('/');
         }
 
+
+
+        
         res.cookie('auth', user);
         return res.redirect('/dashboard');
     } catch (err) {

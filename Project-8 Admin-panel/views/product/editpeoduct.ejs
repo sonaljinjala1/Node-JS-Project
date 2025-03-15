@@ -1,0 +1,145 @@
+<%- include('../header') %>
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-12 grid-margin stretch-card align-items-center">
+                    <div class="title-box col-6 p-0" style="font-family: Source Sans Pro;">
+                        <h2 class="card-title mb-0" style="font-size: 30px;">Update Product Category</h2>
+                    </div>
+                    <div class="btn p-0 col-6 d-flex justify-content-end">
+                        <a href="/tableproduct" class="btn btn-primary">View Product Category</a>
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <form class="forms-sample" method="post" action="/updateproduct"
+                                enctype="multipart/form-data"> 
+                                
+                                <input type="hidden" name="editid" value="<%= single.id %>">
+
+                        <div class="form-row ">
+
+                            <div class="form-group col-4">
+                                <select name="category" class="form-control">
+                                    <option>---Select Category---</option>
+                                    <% category.map((cat)=>{ %>
+                                        <option <% if(cat.category==single.categoryId.category) { %> selected <%}%>
+                                                value="<%= cat.id %>">
+                                                    <%= cat.category %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-4">
+                                <select name="subcategory" class="form-control">
+                                    <option>---Select subategory---</option>
+                                    <% subcategory.map((sub)=>{ %>
+                                        <option <% if(sub.subcategory==single.subcategoryId.subcategory) {%>
+                                            selected <% } %>
+                                                value="<%= sub.id %>">
+                                                    <%= sub.subcategory %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-4">
+                                <select name="excategory" class="form-control">
+                                    <option>---Select extracategory---</option>
+                                    <% excategory.map((ex)=>{ %>
+                                        <option <% if(ex.excategory==single.excategoryId.excategory) { %> selected
+                                            <% } %> value="<%= ex.id %>">
+                                                    <%= ex.excategory %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row ">
+
+                            <div class="form-group col-4">
+                                <input type="text" name="title" value="<%= single.title %>" class="form-control"
+                                    placeholder="Enter title">
+                            </div>
+
+                            <div class="form-group col-4">
+                                <input type="text" name="price" value="<%= single.price %>" class="form-control"
+                                    placeholder="Enter price">
+                            </div>
+
+                            <div class="form-group col-4">
+                                <input type="text" name="qty" value="<%= single.qty %>" class="form-control"
+                                    placeholder="Enter quntity">
+                            </div>
+
+                        </div>
+
+                        <div class="form-row ">
+
+                            <div class="form-group col-6">
+                                <textarea class="form-control" type="text" name="description"
+                                     rows="8"> <%= single.description %> </textarea>
+                            </div>
+
+                            <div class="form col-2">
+                                <img src="<%= single.image %>" width="150">
+                            </div>
+
+                            <div class="form col-4">
+                                <input type="file" name="image" class="form-control">
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button class="btn" style="background-color: rgb(222, 217, 217);">Cancel</button>
+
+                    </form>
+
+                </div>
+                <!-- <form class="forms-sample" method="post" action="/updateproduct"
+                                enctype="multipart/form-data">  <input type="hidden" name="editid" value="<%= single.id %>">
+                              
+                                <div class="form-group">
+                                   
+                                </div>
+                                <div class="form-group">
+                                   
+                                </div>
+                                <div class="form-group">
+                                   
+                                </div>
+                                <div class="form-group">
+                                   
+                                </div>
+                                <div class="form-group">
+                                    
+                                </div>
+                                <div class="form-group">
+                                   
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="description" 
+                                        class="form-control" placeholder="Enter Description">
+                                </div>
+                                <div class="form-group">
+                                   
+                                </div>
+                                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                <button class="btn btn-light">Cancel</button>
+                            </form> -->
+
+
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <!-- partial -->
+    </div>
+
+    <%- include('../footer') %>

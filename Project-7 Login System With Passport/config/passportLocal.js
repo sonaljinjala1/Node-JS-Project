@@ -1,5 +1,4 @@
 const passport = require('passport');
-
 const passportLocal = require('passport-local').Strategy;
 const usersModel = require('../models/usersModel')
 
@@ -12,12 +11,13 @@ passport.use(new passportLocal({
             return done(null, false, { message: 'Invalid email or password' });
         }
         console.log(user);
-        return done(null, user); // user object is passed to the callback
+        return done(null, user);
     }catch(err){
         console.log(err);
         return false;
     }
 }))
+
 
 passport.serializeUser((user,done) => {
     return done(null, user.id);

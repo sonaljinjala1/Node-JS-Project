@@ -9,7 +9,7 @@ db.on("connected", (err) => {
         console.log(err);
         return false;
     }
-    console.log("Database connected successfully......!");
+    console.log("Database connected successfully............................!");
 
 })
 

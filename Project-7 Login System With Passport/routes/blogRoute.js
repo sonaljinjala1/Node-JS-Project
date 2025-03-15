@@ -18,6 +18,7 @@ routes.get('/addblogpage', passport.checkUserLogin, addBlogPage);
 routes.get('/viewblogpage', passport.checkUserLogin, viewBlogPage);
 
 
+//file upload kar
 const st = multer.diskStorage({
     destination: (req, res, cb) => {
         cb(null, 'uploads');
